@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 
 /* GET users listing. */
-router.get('/', authenticate.verifyAdmin, (req, res, next) => {
+router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     User.find()
         .then(users => {
             res.statusCode = 200;
